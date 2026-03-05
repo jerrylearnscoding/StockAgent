@@ -1,6 +1,7 @@
 {
-  "buildCommand": "cd frontend && npm install --legacy-peer-deps && npx vite build",
-  "outputDirectory": "frontend/dist",
+  "buildCommand": "npm install --legacy-peer-deps && npx vite build",
+  "outputDirectory": "dist",
+  "rootDirectory": "frontend",
   "rewrites": [
     { "source": "/api/v1/auth/register", "destination": "/api/v1/auth/register" },
     { "source": "/api/v1/auth/login",    "destination": "/api/v1/auth/login" },
