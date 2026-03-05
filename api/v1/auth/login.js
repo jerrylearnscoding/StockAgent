@@ -15,10 +15,15 @@ module.exports = async function handler(req, res) {
   let username, password;
   const ct = req.headers['content-type'] || '';
   if (ct.includes('urlencoded')) {
-    const body = typeof req.body === 'string' ? req.body : '';
-    const params = new URLSearchParams(body);
-    username = params.get('username');
-    password = params.get('password');
+    // Vercel may parse as object or leave as string
+    if (typeof req.body === 'object' && req.body !== null) {
+      username = req.body.username;
+      password = req.body.password;
+    } else {
+      const params = new URLSearchParams(req.body || '');
+      username = params.get('username');
+      password = params.get('password');
+    }
   } else {
     username = req.body?.username;
     password = req.body?.password;

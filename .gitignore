@@ -97,3 +97,4 @@ docker-compose.override.yml
 *.tmp
 *.temp
 *.bak
+.vercel
